@@ -21,7 +21,7 @@ app.get('/people/:name',(req,res)=>{
     res.json(person);
 });
 
-app.get('file-data',async(req,res)=>{
+app.get('/file-data',async(req,res)=>{
     let data = await fs.readFile(__dirname + '/people-data.json');
     let people=JSON.parse(data);
 

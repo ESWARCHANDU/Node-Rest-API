@@ -12,6 +12,11 @@ app.get('/people', (req,res)=>{
     res.json(people);
 })
 
+app.get('/people/:nmae',(req,res)=>{
+    let {name} =req.params;
+    let person=people.find(x=>x.name === name);
+    res.json(person);
+})
 
 
 app.listen(3000, () => {

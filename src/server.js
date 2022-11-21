@@ -1,9 +1,12 @@
 import express from "express";
+import bodyParser from "body-parser";
 import {promises as fs} from 'fs';
 import { people} from './people';
 
 
 let app=express();
+
+app.use(bodyParser.json());
 
 app.get('/hello', (req,res) =>{
     res.send("Hai Eswar");
@@ -28,6 +31,12 @@ app.get('/file-data',async(req,res)=>{
     res.json(people);
 });
 
+app.post('/people',(req, res)=>{
+    let newPerson = req.body;
+    people.push(newPerson);
+    res.json(people);
+
+});
 
 app.listen(3000, () => {
     console.log("Server started on port 3000");
